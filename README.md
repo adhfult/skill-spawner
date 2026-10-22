@@ -1,10 +1,10 @@
 # skill-spawner
 
-Stop repeating chores by hand. **skill-spawner** is a Claude Code plugin whose skill, `build-project-tool`, reads the project you are in, finds the chores you repeat, and builds a small, tested tool for each one you pick.
+Stop repeating chores by hand. **skill-spawner** is a Claude Code plugin and skill that reads the project you are in, finds the chores you repeat, and builds a small, tested tool for each one you pick.
 
 It cites the file where it saw each chore, waits for your go-ahead, writes nothing before it, and is built to leave your existing code alone. Every tool it builds comes with its own check, a `docs/tools.md` entry and an `AGENTS.md` line, so the next session finds the tool and runs it instead of redoing the work.
 
-Beta (1.0.0-beta). Issues and feedback are welcome.
+Beta (1.0.1-beta). Issues and feedback are welcome.
 
 ## What the evidence shows
 Measured on 20 held-out projects written from real "I keep doing X by hand" posts, none of which the skill was tuned on. A session counts as working only if the tool's own check passes, a hidden acceptance test passes, a deliberately broken copy of the tool fails its check, and no protected source file was edited.
@@ -42,9 +42,9 @@ In Claude Code:
 ```
 
 Or in one step on Claude Code 2.1.275+: `/plugin install skill-spawner --marketplace adhfult/skill-spawner`.
-The skill triggers on its own, or you can call it as `/skill-spawner:build-project-tool`.
+The skill triggers on its own, or you can call it as `/skill-spawner:skill-spawner`.
 
-Without the plugin system, copy `plugins/skill-spawner/skills/build-project-tool/` to `~/.claude/skills/build-project-tool/` and call it as `/build-project-tool`.
+Without the plugin system, copy `plugins/skill-spawner/skills/skill-spawner/` to `~/.claude/skills/skill-spawner/` and call it as `/skill-spawner`.
 
 To uninstall: `/plugin uninstall skill-spawner@skill-spawner` (and `/plugin marketplace remove skill-spawner` to drop the marketplace), or delete the folder you copied. Tools it already built stay in your project as ordinary files you can remove with git.
 
@@ -52,10 +52,10 @@ To uninstall: `/plugin uninstall skill-spawner@skill-spawner` (and `/plugin mark
 The skill is a plain `SKILL.md` folder, so it also works in Codex and Copilot CLI, where it was measured (table below). These steps follow each agent's documentation and have not been tested against this repository name.
 
 - Codex, Copilot CLI and Antigravity in one command, with Vercel's installer:
-  `npx skills@1.7.0 add adhfult/skill-spawner --skill build-project-tool -g -y -a codex -a github-copilot -a antigravity`.
-  It copies the skill to `~/.agents/skills/build-project-tool/`, which Codex and Copilot CLI read.
+  `npx skills@1.7.0 add adhfult/skill-spawner --skill skill-spawner -g -y -a codex -a github-copilot -a antigravity`.
+  It copies the skill to `~/.agents/skills/skill-spawner/`, which Codex and Copilot CLI read.
 - Copilot CLI: `copilot plugin marketplace add adhfult/skill-spawner`, then `copilot plugin install skill-spawner@skill-spawner`.
-- Codex: copy `plugins/skill-spawner/skills/build-project-tool/` into `~/.agents/skills/` (all projects) or the project's `.agents/skills/`.
+- Codex: copy `plugins/skill-spawner/skills/skill-spawner/` into `~/.agents/skills/` (all projects) or the project's `.agents/skills/`.
 - Antigravity: copy the same folder into `~/.gemini/config/skills/` (some versions use `~/.gemini/antigravity-cli/skills/`) or the project's `.agents/skills/`. Antigravity could not be measured, because its headless mode runs one command per turn.
 
 ## Use
@@ -66,9 +66,9 @@ It will not push, deploy, send, delete or install a dependency without asking. T
 
 ### Configure (optional)
 Put these lines in your project `AGENTS.md` or global `CLAUDE.md`:
-- `build-project-tool: propose N, build M` limits how many tools it proposes and builds.
-- `build-project-tool: auto` (experimental) builds the recommended set without the pick, new files only.
-- `build-project-tool: index ~/notes/project-tools.md` appends a one-line entry per tool to a global index. Off unless set.
+- `skill-spawner: propose N, build M` limits how many tools it proposes and builds.
+- `skill-spawner: auto` (experimental) builds the recommended set without the pick, new files only.
+- `skill-spawner: index ~/notes/project-tools.md` appends a one-line entry per tool to a global index. Off unless set.
 
 It also follows your own rules in `CLAUDE.md` / `AGENTS.md` (languages, test command, AI setup). Any AI inside a tool uses a local OpenAI-compatible server such as Ollama unless your rules say otherwise, and never a paid API unless you ask.
 
@@ -100,9 +100,10 @@ How the numbers were produced and what they cannot show: [docs/METHODOLOGY.md](d
 - **Small samples.** Twenty held-out projects, one or two runs per agent, with fixtures written by a model. The intervals above are wide, and the 24-chore result is not a clean held-out test.
 - **The test harness and fixtures (about 46 MB) are not in this repository**, so the numbers cannot be re-run from here.
 - Codex sessions ran with the author's global rules loaded, so they are not clean-environment runs.
+- The measurements were taken before the skill was renamed from `build-project-tool` to `skill-spawner` in 1.0.1-beta. The instructions are unchanged apart from the name, and the renamed skill has had one smoke test but has not been re-measured.
 
 ## Repo layout
-- `plugins/skill-spawner/skills/build-project-tool/SKILL.md`: the skill.
+- `plugins/skill-spawner/skills/skill-spawner/SKILL.md`: the skill.
 - `.claude-plugin/marketplace.json`, `plugins/skill-spawner/.claude-plugin/plugin.json`: manifests.
 - `docs/METHODOLOGY.md`: how it was tested.
 
