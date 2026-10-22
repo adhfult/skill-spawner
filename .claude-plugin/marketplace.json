@@ -1,0 +1,14 @@
+{
+  "name": "skill-spawner",
+  "owner": {
+    "name": "adhfult"
+  },
+  "description": "One plugin: skill-spawner, a skill that builds small tested tools for the project you are in.",
+  "plugins": [
+    {
+      "name": "skill-spawner",
+      "source": "./plugins/skill-spawner",
+      "description": "Reads the project you are in, proposes small tools for chores you repeat by hand, waits for your pick, then builds each with a check and a docs entry."
+    }
+  ]
+}
