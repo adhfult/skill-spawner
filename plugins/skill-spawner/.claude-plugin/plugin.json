@@ -1,7 +1,7 @@
 {
   "name": "skill-spawner",
   "description": "Reads the project you are in, proposes small tools for chores you repeat by hand, waits for your pick, then builds each with a check and a docs entry.",
-  "version": "1.0.1-beta",
+  "version": "1.0.2-beta",
   "author": { "name": "adhfult" },
   "license": "MIT",
   "repository": "https://github.com/adhfult/skill-spawner"
