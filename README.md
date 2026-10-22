@@ -107,6 +107,6 @@ How the numbers were produced and what they cannot show: [docs/METHODOLOGY.md](d
 - `docs/METHODOLOGY.md`: how it was tested.
 
 ## Contact and license
-Issues and feedback: GitHub Issues on this repository, or email fultonadham@gmail.com.
+Issues and feedback: GitHub Issues on this repository.
 
 MIT, see `LICENSE`. Copyright (c) 2026 adhfult.
