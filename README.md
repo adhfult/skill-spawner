@@ -49,14 +49,14 @@ Without the plugin system, copy `plugins/skill-spawner/skills/build-project-tool
 To uninstall: `/plugin uninstall skill-spawner@skill-spawner` (and `/plugin marketplace remove skill-spawner` to drop the marketplace), or delete the folder you copied. Tools it already built stay in your project as ordinary files you can remove with git.
 
 ### Other agents
-The skill is a plain `SKILL.md` folder, so it also works in Codex and Copilot CLI, where it was measured (table below). These steps follow each agent's documentation and have not been tested against this repository name.
+The skill is a plain `SKILL.md` folder, so it also works in Codex and Copilot CLI, where it was measured (table below). The install steps below were tested on 2026-10-22 with Codex 0.163, Copilot CLI 1.0.102 and Antigravity 1.4.5; each installs the same `SKILL.md`.
 
-- Codex, Copilot CLI and Antigravity in one command, with Vercel's installer:
-  `npx skills@1.7.0 add adhfult/skill-spawner --skill build-project-tool -g -y -a codex -a github-copilot -a antigravity`.
-  It copies the skill to `~/.agents/skills/build-project-tool/`, which Codex and Copilot CLI read.
-- Copilot CLI: `copilot plugin marketplace add adhfult/skill-spawner`, then `copilot plugin install skill-spawner@skill-spawner`.
-- Codex: copy `plugins/skill-spawner/skills/build-project-tool/` into `~/.agents/skills/` (all projects) or the project's `.agents/skills/`.
-- Antigravity: copy the same folder into `~/.gemini/config/skills/` (some versions use `~/.gemini/antigravity-cli/skills/`) or the project's `.agents/skills/`. Antigravity could not be measured, because its headless mode runs one command per turn.
+- Codex and Copilot CLI in one command, with Vercel's installer:
+  `npx skills@1.7.0 add adhfult/skill-spawner --skill build-project-tool -g -y -a codex -a github-copilot`.
+  It copies the skill to `~/.agents/skills/build-project-tool/`, which both read.
+- Copilot CLI as a plugin instead: `copilot plugin marketplace add adhfult/skill-spawner`, then `copilot plugin install skill-spawner@skill-spawner`. Use this or the line above, not both.
+- Codex by hand: copy `plugins/skill-spawner/skills/build-project-tool/` into `~/.agents/skills/` (all projects) or the project's `.agents/skills/`.
+- Antigravity: copy the same folder into `~/.gemini/config/skills/` (all projects) or the project's `.agents/skills/`. The `npx` installer does not reach the global Antigravity folder. Antigravity could not be measured, because its headless mode runs one command per turn.
 
 ## Use
 Say "build me a tool for this project" or "I keep doing X by hand, make a tool". You can also describe a chore and ask for it now ("I eyeball photos/ for duplicates, find them for me"). It then proposes a dry-run tool for it and waits for your pick, rather than doing the chore once by hand.
