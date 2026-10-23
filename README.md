@@ -75,7 +75,7 @@ It also follows your own rules in `CLAUDE.md` / `AGENTS.md` (languages, test com
 ## Results in full
 Held-out set, one clean session per fixture and run, Wilson 95% intervals.
 
-| agent and model | sessions | working | hidden test alone: skill / no skill |
+| agent and model | sessions | working | hidden test, also catching broken copies: skill / no skill |
 |---|---|---|---|
 | Claude Code, Sonnet 5.5 | 40 | 32/40, 80% [0.65-0.90] | 33/40 / 12/20 |
 | Claude Code, Haiku 5.5 | 40 | 21/40, 52% [0.37-0.67] | 27/40 / 25/40 |
@@ -86,7 +86,7 @@ Held-out set, one clean session per fixture and run, Wilson 95% intervals.
 | Copilot CLI, default model | 20 | 15/20, 75% [0.53-0.89] | 15/20 / not run |
 
 - Against plain prompting, Sonnet's hidden-test pass rate is higher with the skill (33/40 against 12/20), but at this sample size the gap is not statistically clear (p=0.11). Haiku shows no gap (27/40 against 25/40). The clearest measured improvement is documentation, above.
-- The Codex rows are scored on a separate pass, so their "working" and hidden-test columns need not nest: gpt-6.1-sol has 17 working but 15 on the hidden test alone, which is not explained.
+- The two columns test different things, so they need not nest. "Working" needs the tool's own check to catch deliberately broken copies of the tool. The hidden-test column needs the hidden test to pass and also to catch broken copies (at least half of the kinds of breakage applied). For gpt-6.1-sol (17 working, 15 hidden), two tools passed the hidden test, but it caught broken copies of only 2 of 5 kinds, so that column does not count them, while their own checks did catch them.
 - Reuse: a fresh session finding and using the tool the first one built succeeded in 15 of 20 Sonnet sessions and 7 of 20 Haiku sessions.
 - Negative projects (nothing should be built): Haiku 16/16, Copilot 8/8, gpt-6-luna 8/8, Sonnet 7/8, gpt-6.1-sol 7/8, gpt-6-sol 7/8.
 - Cost per session: Sonnet about $0.20, Haiku about $0.014. Codex and Copilot use subscription quota.
