@@ -31,7 +31,7 @@ In Claude Code:
 ```
 
 Or in one step on Claude Code 2.1.275+: `/plugin install skill-spawner --marketplace adhfult/skill-spawner`.
-The skill triggers on its own, or you can call it as `/skill-spawner:skill-spawner`. Already installed: `/plugin marketplace update skill-spawner`.
+The skill triggers on its own, or you can call it as `/skill-spawner:skill-spawner`. Already installed: `/plugin marketplace update skill-spawner`, then `/plugin update skill-spawner@skill-spawner`, and restart Claude Code.
 
 Without the plugin system, copy `plugins/skill-spawner/skills/skill-spawner/` to `~/.claude/skills/skill-spawner/` and call it as `/skill-spawner`.
 
@@ -54,7 +54,7 @@ Reply with numbers, or "go" for its recommendation. Then check `git status` and 
 It will not push, deploy, send, delete or install a dependency without asking. Tools that change files, send or delete run as a dry run by default.
 
 ### Configure (optional)
-Put these lines in your project `AGENTS.md` or global `CLAUDE.md`:
+Put these lines in your project `AGENTS.md` or global `CLAUDE.md` (lines set before 1.0.5 need the `skill-spawner:` prefix):
 - `skill-spawner: propose N, build M` limits how many tools it proposes and builds.
 - `skill-spawner: auto` (experimental) builds the recommended set without the pick, new files only.
 - `skill-spawner: index ~/notes/project-tools.md` appends a one-line entry per tool to a global index. Off unless set.
@@ -67,7 +67,7 @@ Measured on 20 held-out projects written from real "I keep doing X by hand" post
 - **Most of these numbers were measured on the 1.0.2 text.** The current text (1.0.5) scored 16 of 20 working on the same held-out set in one run (1.0.4: 15 of 20; 1.0.2: 32 of 40 in two runs).
 - **It builds tools that work.** Claude Sonnet 5.5 produced a working tool in 32 of 40 sessions (80%). Codex reached 14 to 17 of 20 across four models (70 to 85%), and Copilot CLI 15 of 20 (75%).
 - **It documents what it builds.** The `AGENTS.md` Commands line was written in all 32 working Sonnet sessions, against 0 of the 12 plain-prompting sessions whose tool passed the hidden test. That plain prompt did not ask for documentation, so this shows the skill adds the step, not that a well-worded prompt could not.
-- **Later sessions reuse the tool.** On 1.0.5, a fresh session asked for the same chore ran the tool the first one built in 20 of 20 held-out projects.
+- **Later sessions reuse the tool.** On 1.0.5, a fresh session asked for the same chore ran the tool the first one built in 20 of 20 held-out projects (in the test setup, whose system prompt named the skill in both sessions).
 - **A good rule in `CLAUDE.md` gets close.** Against a strong standing rule with no skill (check `docs/tools.md` for an existing tool, else write one script with a self-check, document it, add an `AGENTS.md` line), 1.0.5 passed the hidden test in 18 of 20 projects against 14 of 20, and the fresh session reused the tool in 20 of 20 against 19 of 20. The correctness gap is not statistically clear (p=0.24). The skill also waits for your pick before writing anything (the rule wrote first in all 20) and printed no planted key (the rule's sessions printed one, once), but it cost about 45% more per chore ($0.27 against $0.19, both sessions) and adds one turn. If you only want reuse, that rule is a fair alternative.
 - **It leaves your code alone.** No Sonnet session edited a protected file (0 of 40, against 2 of 20 without the skill).
 - **It knows when not to build.** On projects with no repeated chore, it built nothing in 7 of 8 Sonnet sessions and 16 of 16 Haiku sessions.

@@ -46,5 +46,5 @@ The README's main table was measured on the 1.0.2 text.
 - Twenty held-out projects, written by a model, run once or twice per agent. The intervals are wide.
 - If the fixtures are ever published, a model trained on them would have seen them.
 - "Working" is a strict, conjunctive bar. A tool can be useful and still fail it, and the failures were not read one by one.
-- The reuse comparison (1.0.5, against a strong standing rule) is one run on 20 projects. Each arm used its own realistic setup: the skill installed in both sessions, or the rule in both sessions. It compares setups, not wording alone.
+- The reuse comparison (1.0.5, against a strong standing rule) is one run on 20 projects. Each arm used its own setup: the skill installed in both sessions, or the rule in both sessions. The test system prompt also named the skill in both sessions of the skill arm, which a real fresh session does not have. It compares setups, not wording alone.
 - Larger Claude models were not re-run on the shipped skill.

@@ -24,7 +24,7 @@ python3 evals/v82/score_v82.py v-mine
 
 - `--budget` is a hard cap in USD over all results files in `evals/`; `--session-cap` caps one session. Tags must start with `v`.
 - `simulate.py` scores the built tool: its own check, a hidden acceptance test, and broken copies of the tool that its check must catch. `score_v82.py` scores what the harness does not see: the file audit, the index line, the reuse guard.
-- Free checks: `python3 evals/simulate.py --suite evals/v82 --tag vnoop --work "$(mktemp -d)" --noop-check --skill-file plugins/skill-spawner/skills/skill-spawner/SKILL.md` runs every hidden test against a tool that does nothing (all must fail), and `python3 evals/v82/score_v82.py --self-test` tests the scorer.
+- Free checks (they still need `bwrap`): `python3 evals/simulate.py --suite evals/v82 --tag vnoop --work "$(mktemp -d)" --noop-check --skill-file plugins/skill-spawner/skills/skill-spawner/SKILL.md` runs every hidden test against a tool that does nothing (all must fail), and `python3 evals/v82/score_v82.py --self-test` tests the scorer.
 
 ## What 1.0.5 scored (2026-10-24, one run)
 ```
