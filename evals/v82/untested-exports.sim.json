@@ -1,0 +1,35 @@
+{
+ "prompt": "before each release i go through src/ by hand and check which exported functions are never mentioned in test/. can you make a command that lists them as file and function name",
+ "protected": [
+  "src/*",
+  "test/*"
+ ],
+ "hidden": {
+  "all": [
+   "closeTicket",
+   "reopenTicket"
+  ],
+  "none": [
+   "basePrice",
+   "discount",
+   "createTicket",
+   "internalRound",
+   "TAX_RATE"
+  ],
+  "none_skip_ok": true,
+  "norm": true,
+  "arg": [
+   ""
+  ],
+  "unchanged": [
+   "src/*",
+   "test/*"
+  ]
+ },
+ "source": "authored for v8.2 (outside review checklist: a TypeScript project)",
+ "group": "file",
+ "do_now": false,
+ "ref_usage": [
+  "node tools/untested.mjs"
+ ]
+}

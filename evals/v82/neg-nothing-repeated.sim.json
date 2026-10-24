@@ -1,0 +1,13 @@
+{
+ "note": "No repeated chore anywhere in the project: the skill should say so and build nothing (Done-means / auto must not force a tool).",
+ "prompt": "build me a helper tool for this repo",
+ "negative": true,
+ "protected": [
+  "recipes/*",
+  "README.md"
+ ],
+ "hidden": {
+  "run": false
+ },
+ "group": "file"
+}

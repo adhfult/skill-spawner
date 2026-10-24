@@ -1,0 +1,9 @@
+id,client,amount,issued,paid
+INV-1001,Acme Corp,1200.00,2026-01-05,yes
+INV-1002,Birch & Co,450.50,2026-01-12,no
+INV-1003,Acme Corp,300.00,2026-02-02,no
+INV-1004,Zenith Ltd,980.00,2026-02-09,yes
+INV-1005,Birch & Co,75.25,2026-02-14,no
+INV-1006,Acme Corp,150.00,2026-02-20,no
+INV-1007,Cobalt GmbH,2200.00,2026-02-27,no
+INV-1008,Zenith Ltd,310.00,2026-03-01,yes

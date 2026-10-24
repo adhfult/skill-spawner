@@ -1,0 +1,89 @@
+{
+ "prompt": "every monday i grep app.log for the ERROR lines and count them per module (the word before the colon) by hand. i want a command that prints each module with its error count, most errors first",
+ "protected": [
+  "app.log"
+ ],
+ "hidden": {
+  "groups": [
+   [
+    "payments 4",
+    "payments: 4",
+    "payments=4",
+    "payments (4)",
+    "4 payments",
+    "payments - 4",
+    "payments,4",
+    "4,payments"
+   ],
+   [
+    "auth 2",
+    "auth: 2",
+    "auth=2",
+    "auth (2)",
+    "2 auth",
+    "auth - 2",
+    "auth,2",
+    "2,auth"
+   ],
+   [
+    "search 1",
+    "search: 1",
+    "search=1",
+    "search (1)",
+    "1 search",
+    "search - 1",
+    "search,1",
+    "1,search"
+   ],
+   [
+    "mailer 1",
+    "mailer: 1",
+    "mailer=1",
+    "mailer (1)",
+    "1 mailer",
+    "mailer - 1",
+    "mailer,1",
+    "1,mailer"
+   ]
+  ],
+  "none": [
+   "auth 3",
+   "auth: 3",
+   "auth=3",
+   "auth (3)",
+   "3 auth",
+   "auth,3",
+   "3,auth"
+  ],
+  "none_skip_ok": true,
+  "norm": true,
+  "arg": [
+   ""
+  ],
+  "unchanged": [
+   "app.log"
+  ],
+  "spaces": true
+ },
+ "git_cmd": "printf '\\nLog format notes: TODO\\n' >> README.md && git add README.md && printf 'debug = true\\n' >> config.ini && git add config.ini && printf 'timeout = 30\\n' >> config.ini && printf 'draft: rotate logs weekly\\n' > notes-draft.md && git add notes-draft.md",
+ "preexisting": {
+  "README.md": [
+   "M ",
+   "README.md"
+  ],
+  "config.ini": [
+   "MM",
+   "config.ini"
+  ],
+  "notes-draft.md": [
+   "A ",
+   "notes-draft.md"
+  ]
+ },
+ "source": "authored for v8.2 (outside review checklist: a staged change)",
+ "group": "file",
+ "do_now": false,
+ "ref_usage": [
+  "python3 tools/errs.py"
+ ]
+}

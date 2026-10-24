@@ -3,3 +3,4 @@
 !.env.example
 .claude/settings.local.json
 __pycache__/
+evals/results-*.jsonl

@@ -1,0 +1,7 @@
+{
+  "name": "tickets",
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": { "build": "tsc" },
+  "devDependencies": { "typescript": "^5.4.0", "vitest": "^1.6.0" }
+}

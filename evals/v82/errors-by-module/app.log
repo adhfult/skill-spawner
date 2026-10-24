@@ -1,0 +1,13 @@
+2026-03-02 08:01:12 INFO auth: login ok user=ana
+2026-03-02 08:03:40 ERROR payments: card declined order=5512
+2026-03-02 08:04:02 ERROR payments: gateway timeout order=5513
+2026-03-02 08:10:15 WARN search: slow query 2300ms
+2026-03-02 08:11:09 ERROR auth: token expired user=ben
+2026-03-02 08:15:51 INFO payments: retry ok order=5513
+2026-03-02 08:20:33 ERROR search: index unavailable
+2026-03-02 08:21:07 ERROR payments: card declined order=5520
+2026-03-02 08:30:00 INFO auth: logout after ERROR page user=ana
+2026-03-02 08:31:45 ERROR payments: duplicate order=5521
+2026-03-02 08:40:12 ERROR auth: token expired user=cleo
+2026-03-02 08:41:00 ERROR mailer: smtp refused
+2026-03-02 08:45:20 WARN mailer: queue length 150

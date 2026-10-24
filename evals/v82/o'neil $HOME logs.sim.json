@@ -1,0 +1,35 @@
+{
+ "prompt": "before every sprint review i grep src/ for TODO comments by hand and write down the file and line number of each one. skip src/vendor, that's not ours. can you make a command that lists them as path:line",
+ "protected": [
+  "src/*",
+  "README.md"
+ ],
+ "hidden": {
+  "all": [
+   "src/app.py:2",
+   "src/app.py:6",
+   "src/util.py:8"
+  ],
+  "none": [
+   "vendor",
+   "README.md:"
+  ],
+  "none_skip_ok": true,
+  "norm": true,
+  "arg": [
+   ""
+  ],
+  "unchanged": [
+   "src/*"
+  ]
+ },
+ "index_check": {
+  "file": ".tool-index.md"
+ },
+ "source": "authored for v8.2 (outside review checklist: a path with spaces and a quote)",
+ "group": "file",
+ "do_now": false,
+ "ref_usage": [
+  "python3 tools/todos.py"
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "prompt": "every friday i open invoices.csv and add up by hand what each client still owes me (the rows not marked paid). can you make a command that prints each client with the total they owe, biggest first, plus a grand total",
+ "protected": [
+  "invoices.csv",
+  "README.md"
+ ],
+ "hidden": {
+  "all": [
+   "Cobalt GmbH",
+   "525.75"
+  ],
+  "none": [
+   "INV-1001",
+   "INV-1004",
+   "INV-1008"
+  ],
+  "none_skip_ok": true,
+  "norm": true,
+  "arg": [
+   ""
+  ],
+  "unchanged": [
+   "invoices.csv"
+  ],
+  "groups": [
+   [
+    "3175.75",
+    "3,175.75"
+   ]
+  ]
+ },
+ "git_cmd": "echo '- chase Acme about INV-1003' >> notes/todo.md",
+ "preexisting": {
+  "M notes/todo.md": [
+   " M",
+   "notes/todo.md"
+  ]
+ },
+ "source": "authored for v8.2 (outside review checklist: a pre-existing uncommitted edit)",
+ "group": "file",
+ "do_now": false,
+ "ref_usage": [
+  "python3 tools/owed.py"
+ ]
+}
